@@ -9,16 +9,27 @@ button1.addEventListener('click',function(){
 const modulo=document.getElementById('mod');
 
 modulo.addEventListener('click',function(){
-    screen.innerHTML=this.innerHTML;
+   
+    screen.innerHTML+= this.innerHTML;;
+    firstOperand= parseFloat(screen.innerHTML);
+    currentOperator='%';
+    screen.innerHTML='';
 })
 
 const divide=document.getElementById('divide');
 divide.addEventListener('click',function(){
-    screen.innerHTML=this.innerHTML;
+    screen.innerHTML+=this.innerHTML;
+    firstOperand=parseFloat(screen.innerHTML);
+    currentOperator='/';
+    screen.innerHTML='';
 })
 const multiply=document.getElementById('multiply');
 multiply.addEventListener('click',function(){
-    screen.innerHTML=this.innerHTML;
+   
+    screen.innerHTML+=this.innerHTML;
+    firstOperand=parseFloat(screen.innerHTML);
+    currentOperator='*';
+    screen.innerHTML='';
 })
 const seven=document.getElementById('sev');
 seven.addEventListener('click',function(){
@@ -37,8 +48,11 @@ nine.addEventListener('click',function(){
 })
 const sub=document.getElementById('sub');
 sub.addEventListener('click',function(){
-    const value=this.innerHTML;
-    screen.innerHTML+=value;
+   
+    screen.innerHTML+=this.innerHTML;
+    firstOperand=parseFloat(screen.innerHTML);
+    currentOperator='-';
+    screen.innerHTML='';
 })
 const four=document.getElementById('four');
 four.addEventListener('click',function(){
@@ -57,8 +71,30 @@ six.addEventListener('click',function(){
 })
 const equal=document.getElementById('equal');
 equal.addEventListener('click',function(){
-    const value=this.innerHTML;
-    screen.innerHTML+=value;
+    let secondOperand=parseFloat(screen.innerHTML);
+    let result;
+    if(currentOperator==='%'){
+        result=(firstOperand/100)*secondOperand;
+    }
+    else if(currentOperator==='/'){
+        result=firstOperand/secondOperand;
+    }
+    else if(currentOperator==='+'){
+        result=firstOperand+secondOperand;
+    }
+    else if(currentOperator==='-'){
+        result=firstOperand-secondOperand;
+    }
+    else if(currentOperator=='*'){
+        result=firstOperand*secondOperand;
+    }else if(currentOperator=='.'){
+
+    }
+    screen.innerHTML=result;
+    firstOperand=null;
+    secondOperator=null;
+   
+
 })
 const one=document.getElementById('one');
 one.addEventListener('click',function(){
@@ -77,16 +113,23 @@ three.addEventListener('click',function(){
 })
 const add=document.getElementById('add');
 add.addEventListener('click',function(){
-    const value=this.innerHTML;
-    screen.innerHTML+=value;
+    
+    screen.innerHTML+=this.innerHTML;
+    firstOperand=parseFloat(screen.innerHTML);
+    currentOperator='+';
+    screen.innerHTML='';
 })
 const zero=document.getElementById('zero');
 zero.addEventListener('click',function(){
-    const value=this.innerHTML;
-    screen.innerHTML+=value;
+   
+    screen.innerHTML+=this.innerHTML;
 })
 const dot=document.getElementById('dot');
 dot.addEventListener('click',function(){
-    const value=this.innerHTML;
-    screen.innerHTML+=value;
+    
+    if(!screen.innerHTML.includes('.')){
+        screen.innerHTML+='.';
+    }
+    screen.innerHTML+=this.innerHTML;
+    firstOperand=parseFloat(screen.innerHTML);
 })
